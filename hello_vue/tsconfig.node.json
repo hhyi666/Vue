@@ -8,12 +8,14 @@
     "playwright.config.*",
     "eslint.config.*"
   ],
-  "compilerOptions": {
-    "noEmit": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+   "compilerOptions": {
+    "composite": true,  // 新增此行
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
     "types": ["node"]
-  }
+  },
+  
 }

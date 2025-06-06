@@ -1,13 +1,23 @@
 <template>
-    <Person/>
+	<div class="app">
+		<h2>父组件 {{ x }}</h2>
+		<Child/>
+		<!-- 进行注册之后就可以全局使用 -->
+		<hello/>
+	</div>
 </template>
 
-<script>
-    import Person from "./component/Person.vue"
-    // console.log(Person)
-    export default {
-        name : "App" ,
-        components:{Person} //注册组件
-    }
+<script setup lang="ts" name="App">
+import Child from './Child.vue';
+import { Suspense } from 'vue';
+</script>
 
-</script>   
+<style scoped>
+.app {
+	background-color: #ddd;
+	border-radius: 10px;
+	padding: 10px;
+	box-shadow: 0 0 10px;
+
+}
+</style>
