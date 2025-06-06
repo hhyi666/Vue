@@ -68,3 +68,53 @@ console.log(xxx.data.message)
 </script>
 ```
 
+# 全局API移动到应用对象
+
+- app,component 注册全局组件 注册之后就可以当成标签进行使用
+
+  ```ts
+  app.component('hello',hello)
+  ```
+
+- app.config 配置对象 
+
+  ```ts
+  app.config.globalProperties.x = 99
+  declare module 'vue'{
+      interface ComponentCustomProperties{
+          x :  number
+      }
+  }
+  ```
+
+- app.directive 注册全局指令
+
+  ```ts
+  app.directive('beauty',(element,{value}) => {
+      element.innerText += value
+      element.style.color = 'green'
+      element.style.backgroundColor = 'yellow'
+  })
+  
+  //使用
+  <h4 v-beauty>好开心</h4> //直接就能改变相应的东西
+  ```
+
+- app.mount
+
+- app.unmount 卸载应用
+
+- app.use  安装插件的使用
+
+
+
+# 非兼容性改变 （23区别）
+
+- 过度的类名 从 v--enter 变成了 v-enter-from 过渡类名从v-leave 修改成了 v-leave-from
+- keyCode 作为v-on修饰符的支持
+- v-model 的使用 替换了v-bind.sync
+- v-if 和 v-for 在同一元素身上使用的时候优先级发生了变化
+- 移除了$on $off $once的实例方法
+- 移除了过滤器 fillter
+- 移除了 $childred 实例propert
+- 等等 。。面试可能会问
